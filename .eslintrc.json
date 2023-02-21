@@ -1,0 +1,18 @@
+/*
+  O arquivo .eslintrc.json é usado para configurar o ESLint, que
+  é uma ferramenta de análise de código que ajuda a identificar
+  e corrigir erros e problemas de estilo de código em JavaScript.
+*/
+{
+  "extends": "eslint:recommended",
+  "rules": {
+    "semi": ["error", "always"],
+    "quotes": ["error", "double", "single"],
+    "no-console": "off"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  }
+}

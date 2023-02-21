@@ -1,0 +1,15 @@
+/**
+  O arquivo .babelrc é usado para configurar o Babel, que é uma 
+  ferramenta de compilação que converte o código JavaScript 
+  moderno em um formato compatível com navegadores mais antigo
+*/
+{
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": {
+        "chrome": "58",
+        "ie": "11"
+      }
+    }]
+  ]
+}

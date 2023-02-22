@@ -1,0 +1,91 @@
+/* .botao {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 16px;
+  line-height: 1;
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  background-color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.botao--vermelho {
+  background-color: #f00;
+}
+
+.botao--verde {
+  background-color: #0f0;
+}
+
+.botao--azul {
+  background-color: #00f;
+} */
+
+/* Estilo padrão do botão */
+.glass-btn {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 25px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background-color: #fafafa;
+  color: #333;
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2),
+    0px 0px 40px rgba(255, 255, 255, 0.1),
+    inset 0px 0px 40px rgba(255, 255, 255, 0.1),
+    inset 0px 0px 80px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* Estilo para o modo escuro */
+.dark-mode .glass-btn {
+  background-color: #222;
+  color: #fff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5),
+    0px 0px 40px rgba(0, 0, 0, 0.3),
+    inset 0px 0px 40px rgba(0, 0, 0, 0.3),
+    inset 0px 0px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo de hover para o botão */
+.glass-btn:hover {
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2),
+    0px 0px 40px rgba(255, 255, 255, 0.3),
+    inset 0px 0px 40px rgba(255, 255, 255, 0.1),
+    inset 0px 0px 80px rgba(255, 255, 255, 0.2);
+}
+
+/* Estilo para o efeito de vidro */
+.glass-btn:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  bottom: -10px;
+  right: -10px;
+  z-index: -1;
+  background: inherit;
+  filter: blur(20px);
+  opacity: 0.5;
+}
+
+/* Estilo para o efeito de sombra */
+.glass-btn:after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  bottom: -10px;
+  right: -10px;
+  z-index: -2;
+  background: inherit;
+  filter: blur(40px);
+  opacity: 0.5;
+}

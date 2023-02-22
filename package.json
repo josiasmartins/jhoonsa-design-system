@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src --out-dir dist",
-    "build:container": "babel src/js/components/jhoonsa-container* -o dist/js/components/jhoonsa-container"
+    "build:container": "babel src/js/components/jhoonsa-container* -o dist/js/components/jhoonsa-container",
+    "build:gulp": "gulp",
+    "webpack": "webpack --mode production"
   },
   "author": "josias",
   "license": "ISC",
@@ -14,9 +16,13 @@
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
+    "babel-plugin-inline-import": "^3.0.0",
     "babel-plugin-transform-custom-element-classes": "^0.1.0",
     "eslint": "^8.34.0",
     "gulp": "^4.0.2",
-    "jsdoc": "^4.0.2"
+    "html-webpack-plugin": "^5.5.0",
+    "jsdoc": "^4.0.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   }
 }

@@ -1,0 +1,33 @@
+class ProgressBar extends HTMLElement {
+
+  static css = `
+    :host {
+      display: block;
+      width: 250px;
+      height: 40px;
+      background: #eee;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+  `
+
+  constructor() {
+    super();
+
+    this.attachShadow({ mode: 'open' });
+
+    const p = document.createElement('p');
+
+    const style = document.createElement('style');
+    const fill = document.createElement("div");
+
+    style.innerHTML = ProgressBar.css;
+    fill.classList.add("fill");
+
+    this.shadowRoot.append(style, fill);
+
+  }
+
+}
+
+customElements.define('jhoonsa-progress-bar', ProgressBar)

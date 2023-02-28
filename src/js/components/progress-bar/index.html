@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    jhoonsa-progress-bar {
+      --fill-color: violet;
+    }
+  </style>
+</head>
+<body>
+
+
+  <jhoonsa-progress-bar percent="0">
+
+  </jhoonsa-progress-bar>
+
+  <script src="./progress-bar.js"></script>
+
+  <script>
+    let percent = 0;
+    const myProgressBar = document.querySelector('jhoonsa-progress-bar');
+
+    
+    function increasePercent() {
+
+      if (percent <= 100) {
+        setTimeout(() => {
+          percent++;
+          myProgressBar.setAttribute('percent', `${percent}`);
+          increasePercent()
+        }, 50);
+      } else if (percent > 100) {
+        alert("Chegou o numero máximo")
+
+      }
+
+    }
+
+    increasePercent()
+
+    console.log(myProgressBar.percent);
+  </script>
+
+</body>
+</html>

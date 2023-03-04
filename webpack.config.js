@@ -59,11 +59,48 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+// module.exports = {
+//   mode: 'development',
+//   entry: {
+//     button: './src/js/components/button/button.js',
+//     jhoonsa_container: './src/js/components/jhoonsa-container/jhoonsa-container.js',
+//   },
+//   output: {
+//     path: path.resolve(__dirname, 'dist'),
+//     filename: '[name]/[name].js',
+//   },
+//   module: {
+//     rules: [
+//       {
+//         test: /\.html$/,
+//         use: ['html-loader'],
+//       },
+//       {
+//         test: /\.css$/,
+//         use: [MiniCssExtractPlugin.loader, 'css-loader'],
+//       },
+//     ],
+//   },
+//   plugins: [
+//     new MiniCssExtractPlugin({ filename: '[name]/[name].css' }),
+//     new HtmlWebpackPlugin({
+//       template: './src/js/components/button/button.html',
+//       filename: 'button/button.html',
+//       chunks: ['glass_naruto'],
+//     }),
+//     new HtmlWebpackPlugin({
+//       template: './src/js/components/jhoonsa-container/jhoonsa-container.html',
+//       filename: 'jhoonsa_container/jhoonsa_ontainer.html',
+//       chunks: ['jhoonsa-container'],
+//     }),
+//   ],
+// };
+
+// webpack.config.js
+
 module.exports = {
-  mode: 'development',
   entry: {
-    button: './src/js/components/button/button.js',
-    jhoonsa_container: './src/js/components/jhoonsa-container/jhoonsa-container.js',
+    preogress_bar: './src/js/components/progress-bar/progress-bar.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -72,28 +109,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.html$/,
-        use: ['html-loader'],
-      },
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
-  plugins: [
-    new MiniCssExtractPlugin({ filename: '[name]/[name].css' }),
-    new HtmlWebpackPlugin({
-      template: './src/js/components/button/button.html',
-      filename: 'button/button.html',
-      chunks: ['glass_naruto'],
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/js/components/jhoonsa-container/jhoonsa-container.html',
-      filename: 'jhoonsa_container/jhoonsa_ontainer.html',
-      chunks: ['jhoonsa-container'],
-    }),
-  ],
 };
 
 

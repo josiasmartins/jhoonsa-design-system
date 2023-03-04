@@ -9,7 +9,10 @@
     "build": "babel src --out-dir  dist --copy-files",
     "build:container": "babel src/js/components/jhoonsa-container* -o dist/js/components/jhoonsa-container",
     "build:gulp": "gulp",
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "browserify-progress": "browserify ./src/js/components/progress-bar/progress-bar.js > ./dist/js/components/progress-bar/progress-bar2.js -d",
+    "browserify": "browserify -t [ browserify-css --minify=true --output bundle.css ] src/js/components/progress-bar/progress-bar.js  -o novocodigo.js",
+    "browserify:babel": "browserify ./src/js/components/progress-bar/progress-bar.js -t [ babelify --presets [ @babel/preset-env ] ] -t cssify -x ./progress-bar.css > ./dist/naruto2.js"
   },
   "author": "josias",
   "license": "ISC",
@@ -20,7 +23,10 @@
     "babel-loader": "^9.1.2",
     "babel-plugin-inline-import": "^3.0.0",
     "babel-plugin-transform-custom-element-classes": "^0.1.0",
-    "css-loader": "^6.7.3",
+    "babel-plugin-transform-imports": "^2.0.0",
+    "babelify": "^10.0.0",
+    "browserify": "^17.0.0",
+    "browserify-css": "^0.15.0",
     "eslint": "^8.34.0",
     "gulp": "^4.0.2",
     "html-loader": "^4.2.0",
@@ -30,5 +36,8 @@
     "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "cssify": "^1.0.3"
   }
 }

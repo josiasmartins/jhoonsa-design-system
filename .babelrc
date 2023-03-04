@@ -19,6 +19,18 @@
     ["@babel/preset-env"]
   ],
   "plugins": [
-    "transform-custom-element-classes",
+    ["transform-imports", {
+      "lit-html": {
+        "transform": "lit-html/lib/shady-render.js",
+        "preventFullImport": true
+      },
+      "lodash": {
+        "transform": "lodash/${member}",
+        "preventFullImport": true
+      },
+      "src/js/components/progress-bar/*.css": {
+        "transform": "babel-plugin-transform-css-import-to-string"
+      }
+    }]
   ]
 }

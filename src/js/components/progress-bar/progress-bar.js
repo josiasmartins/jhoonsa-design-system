@@ -1,22 +1,10 @@
+import cssStyle from './progress-bar.css';
+import { createElement } from '../../index.js';
+
 class ProgressBar extends HTMLElement {
 
-  static css = `
-    :host {
-      display: block;
-      width: 250px;
-      height: 40px;
-      background: #eee;
-      border-radius: 4px;
-      overflow: hidden;
-    }
 
-    .fill {
-      width: 0%;
-      height: 100%;
-      background: var(--fill-color, #222222);
-      transition: width 0.25s;
-    }
-  `;
+  // static css;
 
   static get observedAttributes() {
     return  ["percent"];
@@ -25,18 +13,22 @@ class ProgressBar extends HTMLElement {
   constructor() {
     super();
 
+    // document.createElement(`<script src="https://unpkg.com/pt-css-tool/dist/css-tool.min.js"></script>`)
+
     this.attachShadow({ mode: 'open' });
 
     const p = document.createElement('p');
 
-    const style = document.createElement('style');
+    const style = createElement('style', this);
     const fill = document.createElement("div");
 
-    style.innerHTML = ProgressBar.css;
+    style.innerHTML = cssStyle;
+
     fill.classList.add("fill");
 
     this.shadowRoot.append(style, fill);
   }
+
 
   get percent() {
     const value = this.getAttribute("percent");

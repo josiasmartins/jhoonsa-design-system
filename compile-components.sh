@@ -15,7 +15,7 @@ for dir in src/js/components/*/; do
   # Compila o arquivo JavaScript do componente com Browserify, usando o plugin Babel e o plugin cssify
   # Também injeta o conteúdo do arquivo CSS do componente no arquivo JavaScript usando a opção "-x"
   # O arquivo compilado é salvo em "dist/nome-do-componente/nome-do-componente.js"
-  browserify "src/js/components/$component/$component.js" -t [ babelify --presets [ @babel/preset-env ] ] -t cssify -x "./$component.css" > "dist/$component/$component.js"
+  browserify "src/js/components/$component/$component.js" -t [ babelify --presets [ @babel/preset-env ] ]  -t [ stringify --extensions [.html] ] -t cssify -x "./$component.css" > "dist/$component/$component.js"
 done
 
 

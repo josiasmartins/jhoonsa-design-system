@@ -1,27 +1,22 @@
-const gulp = require("gulp");
-const babel = require('gulp-babel');
-// const sass = require('gulp-sass');
-const concat = require('gulp-concat');
-const cleanCSS = require('gulp-clean-css');
+const gulp = require('gulp');
+const browserify = require('browserify');
+const babelify = require('babelify');
+const cssify = require('cssify');
+const source = require('vinyl-source-stream');
 
-gulp.task('js', () => {
-  return gulp.src('src/**/*.js')
-    .pipe(babel())
-    .pipe(concat('app.js'))
-    .pipe(gulp.dest('dist/js'));
+gulp.task('progress-bar', () => {
+  return browserify('./src/js/components/progress-bar/progress-bar.js', { debug: true })
+    .transform(babelify, { presets: ['@babel/preset-env'] })
+    .transform(cssify)
+    .bundle()
+    .pipe(source('progress-bar.js'))
+    .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('css', () => {
-  return gulp.src('src/**/*.css')
-    .pipe(sass())
-    .pipe(concat('style.css'))
-    .pipe(cleanCSS())
-    .pipe(gulp.dest('dist/css'));
-});
+gulp.task('all', gulp.series('progress-bar'));
 
 gulp.task('watch', () => {
-  gulp.watch('src/**/*.js', gulp.series('js'));
-  gulp.watch('src/**/*.css', gulp.series('css'));
+  gulp.watch('./src/js/components/progress-bar/*.js', gulp.series('progress-bar'));
 });
 
-gulp.task('default', gulp.parallel('js', 'css', 'watch'));
+gulp.task('default', gulp.series('all', 'watch'));

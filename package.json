@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src --out-dir dist",
-    "build:container": "babel src/js/components/jhoonsa-container* -o dist/js/components/jhoonsa-container"
+    "build": "bash ./compile-components.sh"
   },
   "author": "josias",
   "license": "ISC",
@@ -15,8 +14,10 @@
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
     "babel-plugin-transform-custom-element-classes": "^0.1.0",
+    "babelify": "^10.0.0",
+    "browserify": "^17.0.0",
+    "cssify": "^1.0.3",
     "eslint": "^8.34.0",
-    "gulp": "^4.0.2",
-    "jsdoc": "^4.0.2"
+    "stringify": "^5.2.0"
   }
 }

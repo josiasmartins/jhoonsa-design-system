@@ -1,0 +1,4 @@
+.dark {
+  --color-blue: blue;
+  --shadown-color-default: 0 8px 32px 0 rgba(17, 223, 17, 0.625);
+}

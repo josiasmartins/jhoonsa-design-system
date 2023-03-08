@@ -1,10 +1,7 @@
 import cssStyle from './progress-bar.css';
-import { createElement } from '../../index.js';
+import { createElement } from '../../utils/manipulation-dom/manipulation-dom.util.js'
 
 class ProgressBar extends HTMLElement {
-
-
-  // static css;
 
   static get observedAttributes() {
     return  ["percent"];
@@ -13,13 +10,9 @@ class ProgressBar extends HTMLElement {
   constructor() {
     super();
 
-    // document.createElement(`<script src="https://unpkg.com/pt-css-tool/dist/css-tool.min.js"></script>`)
-
     this.attachShadow({ mode: 'open' });
 
-    const p = document.createElement('p');
-
-    const style = createElement('style', this);
+    const style = createElement('style');
     const fill = document.createElement("div");
 
     style.innerHTML = cssStyle;
@@ -28,7 +21,6 @@ class ProgressBar extends HTMLElement {
 
     this.shadowRoot.append(style, fill);
   }
-
 
   get percent() {
     const value = this.getAttribute("percent");

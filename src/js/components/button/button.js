@@ -19,5 +19,4 @@ class Button {
   }
 
 }
-
-export default Button;
+window.customElements.define('jhoonsa-button', Button);

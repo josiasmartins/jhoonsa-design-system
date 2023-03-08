@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "bash ./compile-components.sh"
+    "build": "bash ./compile-components.sh",
+    "postcss": "postcss"
   },
   "author": "josias",
   "license": "ISC",
@@ -18,6 +19,8 @@
     "browserify": "^17.0.0",
     "cssify": "^1.0.3",
     "eslint": "^8.34.0",
+    "postcss": "^8.4.21",
+    "postcss-import": "^15.1.0",
     "stringify": "^5.2.0"
   }
 }

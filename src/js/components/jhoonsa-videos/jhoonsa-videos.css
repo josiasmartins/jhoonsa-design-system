@@ -1,0 +1,40 @@
+@import '../../../styles/themes/index.css';
+
+.jhoonsa-videos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.jhoonsa-videos {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  width: 400px;
+  margin: 20px;
+  box-shadow: var(--shadown-color-default);
+  transition: transform 0.3s ease-in-out;
+}
+
+.jhoonsa-videos__iframe {
+  position: relative;
+  padding-bottom: 56.25%; /* proporção 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.jhoonsa-videos:hover {
+  transform: scale(1.05);
+}
+
+.jhoonsa-videos__title {
+  font-family: cursive;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+
+

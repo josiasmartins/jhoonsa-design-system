@@ -1,4 +1,10 @@
 :root {
   --color-blue: blue;
+
+  /* cores do shadow */
   --shadown-color-default: 0 8px 32px 0 rgb(5 22 250 / 37%);
+  --shadown-color-blue-strong: 0 8px 32px 0 rgb(31 0 255 / 49%);
+  --shadown-color-purple: 0 8px 32px 0 rgb(96 0 255 / 49%);
+  --shadown-color-green: 0 8px 32px 0 rgb(0 255 124 / 49%);
+  --shadown-color-red: 0 8px 32px 0 rgb(255 0 0 / 49%)
 }

@@ -15,3 +15,12 @@ const _excludeImportFileCss = (css) => {
   console.log(css);
   return css;
 }
+
+export const changeColor = (style) => {
+  switch (style) {
+    case style.includes(''):
+      break;
+  }
+
+  return;
+}

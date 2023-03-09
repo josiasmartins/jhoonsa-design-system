@@ -1,10 +1,8 @@
-import template from './jhoonsa-videos.html';
 import styleCss from './jhoonsa-videos.css';
 import styleTheme from '../../../styles/themes/index.css';
 import styleThemelight from '../../../styles/themes/light.css';
 import styleThemeDark from '../../../styles/themes/dark.css';
 import { concatImportStyle } from '../../utils/toogle-theme/toogle-theme.js';
-import { createTemplate } from '../../utils/manipulation-dom/manipulation-dom.util.js'
 
 class JhoonsaVideos extends HTMLElement {
 
@@ -12,20 +10,28 @@ class JhoonsaVideos extends HTMLElement {
 
   constructor() {
     super();
-    console.log()
+
+    this.jhoonsaColor = null;
+
     const shadowRoot = this.attachShadow({ mode: 'open' });
+
+    // Adiciona os estilos da aplicação
     const style = document.createElement('style');
     style.innerHTML = concatImportStyle(styleTheme, styleThemelight, styleThemeDark, styleCss);
+
+    // Cria o elemento container para os vídeos
     this.container = document.createElement('section');
     this.container.classList.add('jhoonsa-videos-container');
-    // this.container = createTemplate(template);
+
+    // Adiciona o estilo e o container ao Shadow DOM
     shadowRoot.appendChild(style);
     shadowRoot.appendChild(this.container);
+
     this.videos = [];
   }
 
   static get observedAttributes() {
-    return ['videos'];
+    return ['videos', 'jhoonsa-color'];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
@@ -39,16 +45,45 @@ class JhoonsaVideos extends HTMLElement {
       } catch (err) {
         console.error(err);
       }
+    } else if (name === 'jhoonsa-color' && oldValue !== newValue) {
+      this.jhoonsaColor = newValue;
+      this.setBoxShadowColor();
     }
   }
 
-  render() {
+  setBoxShadowColor() {
+    const colors = {
+      jhoonsaColor: {
+        default: '0 8px 32px 0 rgb(5 22 250 / 37%)',
+        blueStrong: '0 8px 32px 0 rgb(31 0 255 / 49%)',
+        purple: '0 8px 32px 0 rgb(96 0 255 / 49%)',
+        green: '0 8px 32px 0 rgb(0 255 124 / 49%)',
+        red: '0 8px 32px 0 rgb(255 0 0 / 49%)',
+      },
+    };
 
+    console.log(this.jhoonsaColor, "ibag jhoonsa")
+
+    const videoDivs = this.shadowRoot.querySelectorAll('.jhoonsa-videos');
+    videoDivs.forEach(videoDiv => {
+      if (this.jhoonsaColor) {
+        const color = colors.jhoonsaColor[this.jhoonsaColor] || colors.jhoonsaColor.default;
+        videoDiv.style.setProperty('box-shadow', color);
+      }
+    });
+
+  }
+
+  render() {
     this.container.innerHTML = '';
+    // Renderiza cada vídeo na página
     this.videos.forEach((video) => {
       const [url, title] = video;
-      const videoDiv = document.createElement('div');
+      let videoDiv = document.createElement('div');
       videoDiv.classList.add('jhoonsa-videos');
+
+      videoDiv.style.backgroundColor = this.jhoonsaColor; // define a cor de fundo da tag customizada
+
       videoDiv.innerHTML = `
         <div class="jhoonsa-videos__iframe">
           <iframe width="100%" height="240" src="${url}" title="${title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

@@ -28,7 +28,9 @@ for dir in src/js/components/*/; do
     # Verifica se a compilação foi concluída com êxito
   if [ $? -eq 0 ]; then
     # Mensagem de conclusão da compilação do componente
-    echo "component $component compiled of success!"
+    echo -e "\e[32mcomponent $component compiled of success!\e[0m"
+
+    echo ""
   else
     # Mensagem de erro na compilação do componente
     echo "houve um erro na compilação do componente $component"

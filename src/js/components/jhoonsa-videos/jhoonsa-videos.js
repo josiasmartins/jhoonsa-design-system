@@ -3,6 +3,7 @@ import styleTheme from '../../../styles/themes/index.css';
 import styleThemelight from '../../../styles/themes/light.css';
 import styleThemeDark from '../../../styles/themes/dark.css';
 import { concatImportStyle } from '../../utils/toogle-theme/toogle-theme.js';
+import { createObjectPropertyCss } from '../../utils/manipulation-dom/manipulation-dom.util.js'
 
 class JhoonsaVideos extends HTMLElement {
 
@@ -52,22 +53,27 @@ class JhoonsaVideos extends HTMLElement {
   }
 
   setBoxShadowColor() {
-    const colors = {
-      jhoonsaColor: {
-        default: '0 8px 32px 0 rgb(5 22 250 / 37%)',
-        blueStrong: '0 8px 32px 0 rgb(31 0 255 / 49%)',
-        purple: '0 8px 32px 0 rgb(96 0 255 / 49%)',
-        green: '0 8px 32px 0 rgb(0 255 124 / 49%)',
-        red: '0 8px 32px 0 rgb(255 0 0 / 49%)',
-      },
-    };
+    // const colors = {
+    //   jhoonsaColor: {
+    //     default: '0 8px 32px 0 rgb(5 22 250 / 37%)',
+    //     blueStrong: '0 8px 32px 0 rgb(31 0 255 / 49%)',
+    //     purple: '0 8px 32px 0 rgb(96 0 255 / 49%)',
+    //     green: '0 8px 32px 0 rgb(0 255 124 / 49%)',
+    //     red: '0 8px 32px 0 rgb(255 0 0 / 49%)',
+    //   },
+    //   dark: {
+    //     default: '',
+    //   }
+    // };
 
-    console.log(this.jhoonsaColor, "ibag jhoonsa")
+    const colors = createObjectPropertyCss();
+
+    console.log(this.jhoonsaColor, "ibag jhoonsa");
 
     const videoDivs = this.shadowRoot.querySelectorAll('.jhoonsa-videos');
     videoDivs.forEach(videoDiv => {
       if (this.jhoonsaColor) {
-        const color = colors.jhoonsaColor[this.jhoonsaColor] || colors.jhoonsaColor.default;
+        const color = colors.light[this.jhoonsaColor] || colors.light.default;
         videoDiv.style.setProperty('box-shadow', color);
       }
     });

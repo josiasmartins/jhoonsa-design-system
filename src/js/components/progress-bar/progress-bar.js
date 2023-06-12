@@ -15,6 +15,8 @@ class ProgressBar extends HTMLElement {
     const style = createElement('style');
     const fill = document.createElement("div");
 
+
+
     style.innerHTML = cssStyle;
 
     fill.classList.add("fill");

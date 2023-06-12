@@ -6,7 +6,7 @@
   justify-content: space-around;
 }
 
-.jhoonsa-videos {
+/* .jhoonsa-videos {
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
@@ -15,6 +15,26 @@
   margin: 20px;
   box-shadow: var(--shadown-color-default);
   transition: transform 0.3s ease-in-out;
+} */
+
+.jhoonsa-videos {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadown-color-default);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+}
+
+.jhoonsa-videos::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  z-index: -1;
+  background: inherit;
+  filter: blur(10px);
 }
 
 .jhoonsa-videos__iframe {

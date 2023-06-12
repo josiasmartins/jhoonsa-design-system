@@ -7,7 +7,14 @@ class GlassContainer extends HTMLElement {
     const template = document.getElementById('glass-container');
 
     const shadowRoot = this.attachShadow({ mode: 'open' });
-    shadowRoot.appendChild(template.cloneNode(true));
+
+    if (template) {
+      shadowRoot.appendChild(template.cloneNode(true));
+    } else {
+      // Handle the case when the template is null
+      console.error('Template is null');
+    }
+    // shadowRoot.appendChild(template.cloneNode(true));
 
     const styleElement = document.createElement('style');
     styleElement.textContent = css;
